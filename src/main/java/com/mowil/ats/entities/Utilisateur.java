@@ -15,16 +15,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Utilisateur implements java.io.Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 28505912489606516L;
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUtilisateur;
 	@ManyToOne
 	private Role role;
@@ -40,95 +42,7 @@ public class Utilisateur implements java.io.Serializable {
 	private String numeroRue;
 	private String nomRue;
 	private String complementAddress;
-	@OneToMany(mappedBy="utilisateur")
+	@OneToMany(mappedBy = "utilisateur")
 	private Collection<Rdv> rdvs;
-	public Long getIdUtilisateur() {
-		return idUtilisateur;
-	}
-	public void setIdUtilisateur(Long idUtilisateur) {
-		this.idUtilisateur = idUtilisateur;
-	}
-	public Role getRole() {
-		return role;
-	}
-	public void setRole(Role role) {
-		this.role = role;
-	}
-	public Ville getVille() {
-		return ville;
-	}
-	public void setVille(Ville ville) {
-		this.ville = ville;
-	}
-	public String getMail() {
-		return mail;
-	}
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-	public String getMdp() {
-		return mdp;
-	}
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
-	}
-	public Date getDateNaissance() {
-		return dateNaissance;
-	}
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-	public String getTelephone() {
-		return telephone;
-	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	public String getPrenom() {
-		return prenom;
-	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	public Byte getStatut() {
-		return statut;
-	}
-	public void setStatut(Byte statut) {
-		this.statut = statut;
-	}
-	public String getNumeroRue() {
-		return numeroRue;
-	}
-	public void setNumeroRue(String numeroRue) {
-		this.numeroRue = numeroRue;
-	}
-	public String getNomRue() {
-		return nomRue;
-	}
-	public void setNomRue(String nomRue) {
-		this.nomRue = nomRue;
-	}
-	public String getComplementAddress() {
-		return complementAddress;
-	}
-	public void setComplementAddress(String complementAddress) {
-		this.complementAddress = complementAddress;
-	}
-	public Collection<Rdv> getRdvs() {
-		return rdvs;
-	}
-	public void setRdvs(Collection<Rdv> rdvs) {
-		this.rdvs = rdvs;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
-	
 }

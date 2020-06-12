@@ -9,51 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Departement implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7881905642548503795L;
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idDepartement;
 	private String libelle;
 	private String code;
-	@OneToMany(mappedBy="departement")
-	private Collection<Ville> villes ;
-	public Long getIdDepartement() {
-		return idDepartement;
-	}
-	public void setIdDepartement(Long idDepartement) {
-		this.idDepartement = idDepartement;
-	}
-	public String getLibelle() {
-		return libelle;
-	}
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-	public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
-	}
-	public Collection<Ville> getVilles() {
-		return villes;
-	}
-	public void setVilles(Collection<Ville> villes) {
-		this.villes = villes;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	@OneToMany(mappedBy = "departement")
+	private Collection<Ville> villes;
 
-	
 }

@@ -15,62 +15,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Ville implements java.io.Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7730345386584545464L;
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idVille;
 	@ManyToOne
 	private Departement departement;
 	private String libelle;
 	private String codePostal;
-	@OneToMany(mappedBy="ville")
+	@OneToMany(mappedBy = "ville")
 	private Collection<Utilisateur> utilisateurs;
-	@OneToMany(mappedBy="ville")
+	@OneToMany(mappedBy = "ville")
 	private Collection<Addresse> addresses;
-	public Long getIdVille() {
-		return idVille;
-	}
-	public void setIdVille(Long idVille) {
-		this.idVille = idVille;
-	}
-	public Departement getDepartement() {
-		return departement;
-	}
-	public void setDepartement(Departement departement) {
-		this.departement = departement;
-	}
-	public String getLibelle() {
-		return libelle;
-	}
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-	public String getCodePostal() {
-		return codePostal;
-	}
-	public void setCodePostal(String codePostal) {
-		this.codePostal = codePostal;
-	}
-	public Collection<Utilisateur> getUtilisateurs() {
-		return utilisateurs;
-	}
-	public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
-	}
-	public Collection<Addresse> getAddresses() {
-		return addresses;
-	}
-	public void setAddresses(Collection<Addresse> addresses) {
-		this.addresses = addresses;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
-	
 }

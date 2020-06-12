@@ -11,19 +11,20 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Rdv implements java.io.Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3092691325286737733L;
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idRdv;
 	@ManyToOne
 	private Addresse addresse;
@@ -33,53 +34,7 @@ public class Rdv implements java.io.Serializable {
 	private Utilisateur utilisateur;
 	private Date dateDebut;
 	private Date dateFin;
-	@OneToMany(mappedBy="rdv")
+	@OneToMany(mappedBy = "rdv")
 	private Collection<RdvServiceProfessionnel> rdvServiceProfessionnels;
-	public Long getIdRdv() {
-		return idRdv;
-	}
-	public void setIdRdv(Long idRdv) {
-		this.idRdv = idRdv;
-	}
-	public Addresse getAddresse() {
-		return addresse;
-	}
-	public void setAddresse(Addresse addresse) {
-		this.addresse = addresse;
-	}
-	public Professionnel getProfessionnel() {
-		return professionnel;
-	}
-	public void setProfessionnel(Professionnel professionnel) {
-		this.professionnel = professionnel;
-	}
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
-	}
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
-	}
-	public Date getDateDebut() {
-		return dateDebut;
-	}
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
-	public Date getDateFin() {
-		return dateFin;
-	}
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
-	}
-	public Collection<RdvServiceProfessionnel> getRdvServiceProfessionnels() {
-		return rdvServiceProfessionnels;
-	}
-	public void setRdvServiceProfessionnels(Collection<RdvServiceProfessionnel> rdvServiceProfessionnels) {
-		this.rdvServiceProfessionnels = rdvServiceProfessionnels;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
-	
 }
