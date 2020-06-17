@@ -10,14 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class Service implements java.io.Serializable {
 
 	private static final long serialVersionUID = 972537843908118737L;
@@ -29,5 +23,44 @@ public class Service implements java.io.Serializable {
 	private String libelle;
 	@OneToMany(mappedBy = "service")
 	private Collection<ServiceProfessionnel> serviceProfessionnels;
+	public Service() {
+		super();
+	}
+	public Service(Long idService, Profession profession, String libelle,
+			Collection<ServiceProfessionnel> serviceProfessionnels) {
+		super();
+		this.idService = idService;
+		this.profession = profession;
+		this.libelle = libelle;
+		this.serviceProfessionnels = serviceProfessionnels;
+	}
+	public Long getIdService() {
+		return idService;
+	}
+	public void setIdService(Long idService) {
+		this.idService = idService;
+	}
+	public Profession getProfession() {
+		return profession;
+	}
+	public void setProfession(Profession profession) {
+		this.profession = profession;
+	}
+	public String getLibelle() {
+		return libelle;
+	}
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+	public Collection<ServiceProfessionnel> getServiceProfessionnels() {
+		return serviceProfessionnels;
+	}
+	public void setServiceProfessionnels(Collection<ServiceProfessionnel> serviceProfessionnels) {
+		this.serviceProfessionnels = serviceProfessionnels;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
+	
 }

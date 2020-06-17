@@ -9,14 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class Role implements java.io.Serializable {
 
 	/**
@@ -29,5 +23,36 @@ public class Role implements java.io.Serializable {
 	private String libelle;
 	@OneToMany(mappedBy = "role")
 	private Collection<Utilisateur> utilisateurs;
+	public Role() {
+		super();
+	}
+	public Role(Long idRole, String libelle, Collection<Utilisateur> utilisateurs) {
+		super();
+		this.idRole = idRole;
+		this.libelle = libelle;
+		this.utilisateurs = utilisateurs;
+	}
+	public Long getIdRole() {
+		return idRole;
+	}
+	public void setIdRole(Long idRole) {
+		this.idRole = idRole;
+	}
+	public String getLibelle() {
+		return libelle;
+	}
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+	public Collection<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+	public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
+	
 }

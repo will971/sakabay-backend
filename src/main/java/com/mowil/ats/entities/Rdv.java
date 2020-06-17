@@ -11,12 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import lombok.*;
-
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class Rdv implements java.io.Serializable {
 
 	/**
@@ -36,5 +32,83 @@ public class Rdv implements java.io.Serializable {
 	private Date dateFin;
 	@OneToMany(mappedBy = "rdv")
 	private Collection<RdvServiceProfessionnel> rdvServiceProfessionnels;
+	
+	public Rdv() {
+		super();
+	}
 
+	public Rdv(Long idRdv, Addresse addresse, Professionnel professionnel, Utilisateur utilisateur, Date dateDebut,
+			Date dateFin, Collection<RdvServiceProfessionnel> rdvServiceProfessionnels) {
+		super();
+		this.idRdv = idRdv;
+		this.addresse = addresse;
+		this.professionnel = professionnel;
+		this.utilisateur = utilisateur;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.rdvServiceProfessionnels = rdvServiceProfessionnels;
+	}
+
+	public Long getIdRdv() {
+		return idRdv;
+	}
+
+	public void setIdRdv(Long idRdv) {
+		this.idRdv = idRdv;
+	}
+
+	public Addresse getAddresse() {
+		return addresse;
+	}
+
+	public void setAddresse(Addresse addresse) {
+		this.addresse = addresse;
+	}
+
+	public Professionnel getProfessionnel() {
+		return professionnel;
+	}
+
+	public void setProfessionnel(Professionnel professionnel) {
+		this.professionnel = professionnel;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public Date getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+
+	public Collection<RdvServiceProfessionnel> getRdvServiceProfessionnels() {
+		return rdvServiceProfessionnels;
+	}
+
+	public void setRdvServiceProfessionnels(Collection<RdvServiceProfessionnel> rdvServiceProfessionnels) {
+		this.rdvServiceProfessionnels = rdvServiceProfessionnels;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
+	
 }

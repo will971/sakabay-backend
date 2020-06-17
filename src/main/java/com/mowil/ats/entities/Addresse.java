@@ -10,12 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import lombok.*;
-
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class Addresse implements java.io.Serializable {
 
 	private static final long serialVersionUID = -1237565009519875750L;
@@ -31,5 +27,83 @@ public class Addresse implements java.io.Serializable {
 	private Collection<Rdv> rdvs;
 	@OneToMany(mappedBy = "addresse")
 	private Collection<Professionnel> professionnels;
+	
+	public Addresse() {
+		super();
+	}
 
+	public Addresse(Long idAddresse, Ville ville, String numeroRue, String nomRue, String complementAddresse,
+			Collection<Rdv> rdvs, Collection<Professionnel> professionnels) {
+		super();
+		this.idAddresse = idAddresse;
+		this.ville = ville;
+		this.numeroRue = numeroRue;
+		this.nomRue = nomRue;
+		this.complementAddresse = complementAddresse;
+		this.rdvs = rdvs;
+		this.professionnels = professionnels;
+	}
+
+	public Long getIdAddresse() {
+		return idAddresse;
+	}
+
+	public void setIdAddresse(Long idAddresse) {
+		this.idAddresse = idAddresse;
+	}
+
+	public Ville getVille() {
+		return ville;
+	}
+
+	public void setVille(Ville ville) {
+		this.ville = ville;
+	}
+
+	public String getNumeroRue() {
+		return numeroRue;
+	}
+
+	public void setNumeroRue(String numeroRue) {
+		this.numeroRue = numeroRue;
+	}
+
+	public String getNomRue() {
+		return nomRue;
+	}
+
+	public void setNomRue(String nomRue) {
+		this.nomRue = nomRue;
+	}
+
+	public String getComplementAddresse() {
+		return complementAddresse;
+	}
+
+	public void setComplementAddresse(String complementAddresse) {
+		this.complementAddresse = complementAddresse;
+	}
+
+	public Collection<Rdv> getRdvs() {
+		return rdvs;
+	}
+
+	public void setRdvs(Collection<Rdv> rdvs) {
+		this.rdvs = rdvs;
+	}
+
+	public Collection<Professionnel> getProfessionnels() {
+		return professionnels;
+	}
+
+	public void setProfessionnels(Collection<Professionnel> professionnels) {
+		this.professionnels = professionnels;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
+	
 }

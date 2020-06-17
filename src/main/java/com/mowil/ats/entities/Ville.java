@@ -10,14 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class Ville implements java.io.Serializable {
 
 	/**
@@ -35,5 +29,58 @@ public class Ville implements java.io.Serializable {
 	private Collection<Utilisateur> utilisateurs;
 	@OneToMany(mappedBy = "ville")
 	private Collection<Addresse> addresses;
+	public Ville() {
+		super();
+	}
+	public Ville(Long idVille, Departement departement, String libelle, String codePostal,
+			Collection<Utilisateur> utilisateurs, Collection<Addresse> addresses) {
+		super();
+		this.idVille = idVille;
+		this.departement = departement;
+		this.libelle = libelle;
+		this.codePostal = codePostal;
+		this.utilisateurs = utilisateurs;
+		this.addresses = addresses;
+	}
+	public Long getIdVille() {
+		return idVille;
+	}
+	public void setIdVille(Long idVille) {
+		this.idVille = idVille;
+	}
+	public Departement getDepartement() {
+		return departement;
+	}
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+	public String getLibelle() {
+		return libelle;
+	}
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+	public String getCodePostal() {
+		return codePostal;
+	}
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+	public Collection<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+	public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
+	public Collection<Addresse> getAddresses() {
+		return addresses;
+	}
+	public void setAddresses(Collection<Addresse> addresses) {
+		this.addresses = addresses;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
+	
 }
