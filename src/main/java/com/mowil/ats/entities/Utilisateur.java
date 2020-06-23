@@ -4,6 +4,7 @@ package com.mowil.ats.entities;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,30 +23,42 @@ public class Utilisateur implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUtilisateur;
+	@Column(unique = true, nullable = false)
+	private String username;
 	@ManyToOne
 	private Role role;
 	@ManyToOne
 	private Ville ville;
+	@Column(unique = true, nullable = false)
 	private String mail;
+	@Column(nullable = false)
 	private String mdp;
+	@Column(nullable = false)
 	private Date dateNaissance;
 	private String telephone;
+	@Column(nullable = false)
 	private String nom;
+	@Column(nullable = false)
 	private String prenom;
-	private Byte statut;
+	private boolean statut;
+	@Column(nullable = false)
 	private String numeroRue;
+	@Column(nullable = false)
 	private String nomRue;
+	@Column(nullable = true)
 	private String complementAddress;
 	@OneToMany(mappedBy = "utilisateur")
 	private Collection<Rdv> rdvs;
 	public Utilisateur() {
 		super();
 	}
-	public Utilisateur(Long idUtilisateur, Role role, Ville ville, String mail, String mdp, Date dateNaissance,
-			String telephone, String nom, String prenom, Byte statut, String numeroRue, String nomRue,
-			String complementAddress, Collection<Rdv> rdvs) {
+	
+	public Utilisateur(Long idUtilisateur, String username, Role role, Ville ville, String mail, String mdp,
+			Date dateNaissance, String telephone, String nom, String prenom, boolean statut, String numeroRue,
+			String nomRue, String complementAddress, Collection<Rdv> rdvs) {
 		super();
 		this.idUtilisateur = idUtilisateur;
+		this.username = username;
 		this.role = role;
 		this.ville = ville;
 		this.mail = mail;
@@ -60,6 +73,7 @@ public class Utilisateur implements java.io.Serializable {
 		this.complementAddress = complementAddress;
 		this.rdvs = rdvs;
 	}
+
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
 	}
@@ -114,10 +128,10 @@ public class Utilisateur implements java.io.Serializable {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public Byte getStatut() {
+	public boolean getStatut() {
 		return statut;
 	}
-	public void setStatut(Byte statut) {
+	public void setStatut(boolean statut) {
 		this.statut = statut;
 	}
 	public String getNumeroRue() {
@@ -146,6 +160,12 @@ public class Utilisateur implements java.io.Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	
