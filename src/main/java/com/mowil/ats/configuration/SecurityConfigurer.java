@@ -12,13 +12,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.mowil.ats.services.UtilisateurDetailsService;
+import com.mowil.ats.services.AllUserDetailsService;
 
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UtilisateurDetailsService utilisateurDetailService;
+	private AllUserDetailsService allUserDetailService;
 
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
@@ -27,7 +27,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(utilisateurDetailService).passwordEncoder(passwordEncoder());
+		auth.userDetailsService(allUserDetailService).passwordEncoder(passwordEncoder());
 	}
 
 	@Bean

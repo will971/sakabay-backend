@@ -9,20 +9,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.mowil.ats.dao.UtilisateurRepository;
-import com.mowil.ats.entities.Utilisateur;
+import com.mowil.ats.dao.ProfessionnelRepository;
+import com.mowil.ats.entities.Professionnel;
 @Service
-public class UtilisateurDetailsService implements UserDetailsService {
+public class ProfessionnelDetailsService implements UserDetailsService {
 	@Autowired
-	private UtilisateurRepository utilisateurRepository;
+	private ProfessionnelRepository professionnelRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		 System.out.println("je suis passé dans user");
-
-		Utilisateur utilisateurData =this.utilisateurRepository.findUserByUsername(username)
+		System.out.println("je suis passé dans professionnel");
+		Professionnel pro = this.professionnelRepository.findProfessionnelByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("user not found"));
-		 User user = new User(utilisateurData.getMail(), utilisateurData.getMdp(), new ArrayList<>());
-				return user;
+		System.out.println("je suis passé dans professionnel");
+		return new User(pro.getMail(), pro.getMdp(), new ArrayList<>());
 	}
 }

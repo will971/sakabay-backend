@@ -12,6 +12,6 @@ import com.mowil.ats.entities.Utilisateur;
 public interface UtilisateurRepository extends JpaRepository< Utilisateur,Long> {
 
 	@Query(" select u from Utilisateur u " +
-            " where u.username = ?1 or u.mail=?1")
+            " where u.mail = ?1")
 	public Optional<Utilisateur> findUserByUsername(String username);
 }

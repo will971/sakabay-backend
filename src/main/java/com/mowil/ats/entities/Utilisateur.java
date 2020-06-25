@@ -23,8 +23,7 @@ public class Utilisateur implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUtilisateur;
-	@Column(unique = true, nullable = false)
-	private String username;
+	
 	@ManyToOne
 	private Role role;
 	@ManyToOne
@@ -53,27 +52,7 @@ public class Utilisateur implements java.io.Serializable {
 		super();
 	}
 	
-	public Utilisateur(Long idUtilisateur, String username, Role role, Ville ville, String mail, String mdp,
-			Date dateNaissance, String telephone, String nom, String prenom, boolean statut, String numeroRue,
-			String nomRue, String complementAddress, Collection<Rdv> rdvs) {
-		super();
-		this.idUtilisateur = idUtilisateur;
-		this.username = username;
-		this.role = role;
-		this.ville = ville;
-		this.mail = mail;
-		this.mdp = mdp;
-		this.dateNaissance = dateNaissance;
-		this.telephone = telephone;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.statut = statut;
-		this.numeroRue = numeroRue;
-		this.nomRue = nomRue;
-		this.complementAddress = complementAddress;
-		this.rdvs = rdvs;
-	}
-
+	
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
 	}
@@ -161,12 +140,6 @@ public class Utilisateur implements java.io.Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
+	
 	
 }

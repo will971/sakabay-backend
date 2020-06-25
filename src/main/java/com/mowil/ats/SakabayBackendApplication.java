@@ -74,7 +74,6 @@ public class SakabayBackendApplication implements CommandLineRunner {
 		utilisateur1.setTelephone("0778430873");
 		utilisateur1.setNumeroRue("01");
 		utilisateur1.setNomRue("Boulevard gerty archimède");
-		utilisateur1.setUsername("will");
 		utilisateur1.setStatut(true);
 		utilisateurRepository.save(utilisateur1);
 
@@ -90,7 +89,6 @@ public class SakabayBackendApplication implements CommandLineRunner {
 		utilisateur2.setTelephone("000000000");
 		utilisateur2.setNumeroRue("69");
 		utilisateur2.setNomRue("owa blanc la");
-		utilisateur2.setUsername("darmajock");
 		utilisateur2.setStatut(true);
 		utilisateurRepository.save(utilisateur2);
 
