@@ -1,7 +1,9 @@
 package com.mowil.ats;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -9,14 +11,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.mowil.ats.dao.DepartementRepository;
-import com.mowil.ats.dao.RoleRepository;
-import com.mowil.ats.dao.UtilisateurRepository;
-import com.mowil.ats.dao.VilleRepository;
-import com.mowil.ats.entities.Departement;
-import com.mowil.ats.entities.Role;
-import com.mowil.ats.entities.Utilisateur;
-import com.mowil.ats.entities.Ville;
+import com.mowil.ats.dao.entities.Compte;
+import com.mowil.ats.dao.entities.Departement;
+import com.mowil.ats.dao.entities.Role;
+import com.mowil.ats.dao.entities.Utilisateur;
+import com.mowil.ats.dao.entities.Ville;
+import com.mowil.ats.dao.repositories.CompteRepository;
+import com.mowil.ats.dao.repositories.DepartementRepository;
+import com.mowil.ats.dao.repositories.RoleRepository;
+import com.mowil.ats.dao.repositories.UtilisateurRepository;
+import com.mowil.ats.dao.repositories.VilleRepository;
 
 @SpringBootApplication
 public class SakabayBackendApplication implements CommandLineRunner {
@@ -28,7 +32,8 @@ public class SakabayBackendApplication implements CommandLineRunner {
 	private RoleRepository roleRepository;
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
-	
+	@Autowired
+	private CompteRepository compteRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SakabayBackendApplication.class, args);
@@ -37,8 +42,9 @@ public class SakabayBackendApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		
+
 		Calendar cal = new GregorianCalendar();
+
 		Departement dep1 = new Departement();
 		dep1.setLibelle("Guadeloupe");
 		dep1.setCode("971");
@@ -47,50 +53,46 @@ public class SakabayBackendApplication implements CommandLineRunner {
 		ville1.setLibelle("Basse-Terre");
 		ville1.setCodePostal("97100");
 		ville1.setDepartement(dep1);
+
 		Ville ville2 = new Ville();
 		ville2.setLibelle("Petit bourg");
 		ville2.setDepartement(dep1);
 		ville2.setCodePostal("97170");
-		Role role1 = new Role();
-		role1.setLibelle("USER");
-		Role role2 = new Role();
-		role2.setLibelle("Admin");
+
+		Role role1 = new Role("USER");
+
 		roleRepository.save(role1);
+
+		Role role2 = new Role("ADMIN");
 		roleRepository.save(role2);
 
+		Role role3 = new Role("PROFFESSIONNEL");
+		roleRepository.save(role3);
+		
 		depRepository.save(dep1);
 		villeRepository.save(ville1);
 		villeRepository.save(ville2);
 
+		Compte c1 = new Compte();
 		Utilisateur utilisateur1 = new Utilisateur();
-		utilisateur1.setMail("modeste.william.s@gmail.com");
-		utilisateur1.setMdp(passwordEncoder.encode("will"));
-		utilisateur1.setNom("MODESTE");
-		utilisateur1.setPrenom("Will");
-		utilisateur1.setDateNaissance(cal.getTime());
-		utilisateur1.setComplementAddress("owa fanm aw");
-		utilisateur1.setRole(role1);
-		utilisateur1.setVille(ville1);
-		utilisateur1.setTelephone("0778430873");
-		utilisateur1.setNumeroRue("01");
-		utilisateur1.setNomRue("Boulevard gerty archimède");
-		utilisateur1.setStatut(true);
-		utilisateurRepository.save(utilisateur1);
 
-		Utilisateur utilisateur2 = new Utilisateur();
-		utilisateur2.setMail("jock@email.com");
-		utilisateur2.setMdp(passwordEncoder.encode("darmajock"));
-		utilisateur2.setNom("Darmalingon");
-		utilisateur2.setPrenom("Joachim");
-		utilisateur2.setDateNaissance(cal.getTime());
-		utilisateur2.setComplementAddress("an ba boule ay");
-		utilisateur2.setRole(role2);
-		utilisateur2.setVille(ville2);
-		utilisateur2.setTelephone("000000000");
-		utilisateur2.setNumeroRue("69");
-		utilisateur2.setNomRue("owa blanc la");
-		utilisateur2.setStatut(true);
-		utilisateurRepository.save(utilisateur2);
+		c1.setDateDeNaissance(cal.getTime());
+		c1.setMail("modeste.william.s@gmail.com");
+		c1.setPassword(passwordEncoder.encode("will"));
+		c1.setUsername("Will");
+		ArrayList<Role> listRoles=new ArrayList<Role>();
+		listRoles.add(role1);
+		listRoles.add(role2);
+		listRoles.add(role3);
+		
+		c1.setRoles(new HashSet<Role>(listRoles));
+		compteRepository.save(c1);
+
+		utilisateur1.setPrenom("Will");
+		utilisateur1.setNom("MODESTE");
+		utilisateur1.setTelephone("0778430873");
+		utilisateur1.setCompte(c1);
+		utilisateurRepository.save(utilisateur1);
 
 	}
 

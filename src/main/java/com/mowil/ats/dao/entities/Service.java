@@ -1,4 +1,4 @@
-package com.mowil.ats.entities;
+package com.mowil.ats.dao.entities;
 // Generated 11 juin 2020 17:08:47 by Hibernate Tools 5.4.14.Final
 
 import java.util.Collection;
@@ -23,9 +23,11 @@ public class Service implements java.io.Serializable {
 	private String libelle;
 	@OneToMany(mappedBy = "service")
 	private Collection<ServiceProfessionnel> serviceProfessionnels;
+
 	public Service() {
 		super();
 	}
+
 	public Service(Long idService, Profession profession, String libelle,
 			Collection<ServiceProfessionnel> serviceProfessionnels) {
 		super();
@@ -34,33 +36,41 @@ public class Service implements java.io.Serializable {
 		this.libelle = libelle;
 		this.serviceProfessionnels = serviceProfessionnels;
 	}
+
 	public Long getIdService() {
 		return idService;
 	}
+
 	public void setIdService(Long idService) {
 		this.idService = idService;
 	}
+
 	public Profession getProfession() {
 		return profession;
 	}
+
 	public void setProfession(Profession profession) {
 		this.profession = profession;
 	}
+
 	public String getLibelle() {
 		return libelle;
 	}
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+
 	public Collection<ServiceProfessionnel> getServiceProfessionnels() {
 		return serviceProfessionnels;
 	}
+
 	public void setServiceProfessionnels(Collection<ServiceProfessionnel> serviceProfessionnels) {
 		this.serviceProfessionnels = serviceProfessionnels;
 	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	
 }

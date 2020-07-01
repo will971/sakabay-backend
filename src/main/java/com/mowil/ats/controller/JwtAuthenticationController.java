@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mowil.ats.configuration.JwtTokenUtil;
 import com.mowil.ats.model.JwtRequest;
 import com.mowil.ats.model.JwtResponse;
-import com.mowil.ats.services.ProfessionnelDetailsService;
-import com.mowil.ats.services.UtilisateurDetailsService;
+import com.mowil.ats.services.AllUserDetailsService;
 
 @RestController
 @CrossOrigin
@@ -27,28 +26,19 @@ public class JwtAuthenticationController {
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 	@Autowired
-	private UtilisateurDetailsService userDetailsService;
-	@Autowired
-	ProfessionnelDetailsService professionnelDetailsService;
+	AllUserDetailsService userDetailsService;
+	
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest, String type)
+	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
 			throws Exception {
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-		if (type.equals("user")) {
-
-			final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-			final String token = jwtTokenUtil.generateToken(userDetails, type);
-			return ResponseEntity.ok(new JwtResponse(token));
-		} else if (type.equals("pro")) {
-			final UserDetails professionnelDetails = professionnelDetailsService
-					.loadUserByUsername(authenticationRequest.getUsername());
-			final String token = jwtTokenUtil.generateToken(professionnelDetails, type);
-			return ResponseEntity.ok(new JwtResponse(token));
-		}
-		else {
-			throw new Exception();
-		}
+		
+		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+		final String token= jwtTokenUtil.generateToken(userDetails);
+		
+		
+		return ResponseEntity.ok(new JwtResponse(token));
 	}
 
 	private void authenticate(String username, String password) throws Exception {

@@ -1,9 +1,10 @@
-package com.mowil.ats.entities;
+package com.mowil.ats.dao.entities;
 // Generated 11 juin 2020 17:08:47 by Hibernate Tools 5.4.14.Final
 
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,14 +22,14 @@ public class Rdv implements java.io.Serializable {
 	private static final long serialVersionUID = -3092691325286737733L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idRdv;
-	@ManyToOne
-	private Addresse addresse;
+	private Long idRdv;	
 	@ManyToOne
 	private Professionnel professionnel;
 	@ManyToOne
 	private Utilisateur utilisateur;
+	@Column(nullable=false)
 	private Date dateDebut;
+	@Column(nullable = true)
 	private Date dateFin;
 	@OneToMany(mappedBy = "rdv")
 	private Collection<RdvServiceProfessionnel> rdvServiceProfessionnels;
@@ -37,11 +38,10 @@ public class Rdv implements java.io.Serializable {
 		super();
 	}
 
-	public Rdv(Long idRdv, Addresse addresse, Professionnel professionnel, Utilisateur utilisateur, Date dateDebut,
-			Date dateFin, Collection<RdvServiceProfessionnel> rdvServiceProfessionnels) {
+	public Rdv(Long idRdv, Professionnel professionnel, Utilisateur utilisateur, Date dateDebut, Date dateFin,
+			Collection<RdvServiceProfessionnel> rdvServiceProfessionnels) {
 		super();
 		this.idRdv = idRdv;
-		this.addresse = addresse;
 		this.professionnel = professionnel;
 		this.utilisateur = utilisateur;
 		this.dateDebut = dateDebut;
@@ -55,14 +55,6 @@ public class Rdv implements java.io.Serializable {
 
 	public void setIdRdv(Long idRdv) {
 		this.idRdv = idRdv;
-	}
-
-	public Addresse getAddresse() {
-		return addresse;
-	}
-
-	public void setAddresse(Addresse addresse) {
-		this.addresse = addresse;
 	}
 
 	public Professionnel getProfessionnel() {
@@ -108,6 +100,8 @@ public class Rdv implements java.io.Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	
 
 	
 	

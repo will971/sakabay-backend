@@ -1,4 +1,4 @@
-package com.mowil.ats.entities;
+package com.mowil.ats.dao.entities;
 // Generated 11 juin 2020 17:08:47 by Hibernate Tools 5.4.14.Final
 
 import java.util.Collection;

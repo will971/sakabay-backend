@@ -1,55 +1,55 @@
-package com.mowil.ats.entities;
-// Generated 11 juin 2020 17:08:47 by Hibernate Tools 5.4.14.Final
+package com.mowil.ats.dao.entities;
 
-import java.util.Collection;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 
-public class Addresse implements java.io.Serializable {
+public class AddresseProfessionnel implements java.io.Serializable {
 
 	private static final long serialVersionUID = -1237565009519875750L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idAddresse;
+	private Long id;
 	@ManyToOne
+	@JoinColumn(name="id_ville", nullable=false)
 	private Ville ville;
+	@Column()
 	private String numeroRue;
+	@Column(nullable = false)
 	private String nomRue;
+	@Column()
 	private String complementAddresse;
-	@OneToMany(mappedBy = "addresse")
-	private Collection<Rdv> rdvs;
-	@OneToMany(mappedBy = "addresse")
-	private Collection<Professionnel> professionnels;
-	
-	public Addresse() {
+
+	@ManyToOne()
+	private Professionnel professionnel;
+
+	public AddresseProfessionnel() {
 		super();
 	}
 
-	public Addresse(Long idAddresse, Ville ville, String numeroRue, String nomRue, String complementAddresse,
-			Collection<Rdv> rdvs, Collection<Professionnel> professionnels) {
+	public AddresseProfessionnel(Long id, Ville ville, String numeroRue, String nomRue, String complementAddresse,
+			Professionnel professionnel) {
 		super();
-		this.idAddresse = idAddresse;
+		this.id = id;
 		this.ville = ville;
 		this.numeroRue = numeroRue;
 		this.nomRue = nomRue;
 		this.complementAddresse = complementAddresse;
-		this.rdvs = rdvs;
-		this.professionnels = professionnels;
+		this.professionnel = professionnel;
 	}
 
-	public Long getIdAddresse() {
-		return idAddresse;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdAddresse(Long idAddresse) {
-		this.idAddresse = idAddresse;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Ville getVille() {
@@ -84,26 +84,18 @@ public class Addresse implements java.io.Serializable {
 		this.complementAddresse = complementAddresse;
 	}
 
-	public Collection<Rdv> getRdvs() {
-		return rdvs;
+	public Professionnel getProfessionnel() {
+		return professionnel;
 	}
 
-	public void setRdvs(Collection<Rdv> rdvs) {
-		this.rdvs = rdvs;
-	}
-
-	public Collection<Professionnel> getProfessionnels() {
-		return professionnels;
-	}
-
-	public void setProfessionnels(Collection<Professionnel> professionnels) {
-		this.professionnels = professionnels;
+	public void setProfessionnel(Professionnel professionnel) {
+		this.professionnel = professionnel;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
 
-	
-	
 }

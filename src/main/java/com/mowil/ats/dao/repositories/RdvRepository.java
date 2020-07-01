@@ -1,9 +1,9 @@
-package com.mowil.ats.dao;
+package com.mowil.ats.dao.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mowil.ats.entities.Rdv;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import com.mowil.ats.dao.entities.Rdv;
 
 @RepositoryRestResource
 public interface RdvRepository extends JpaRepository< Rdv,Long> {

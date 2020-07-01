@@ -1,8 +1,9 @@
-package com.mowil.ats.entities;
+package com.mowil.ats.dao.entities;
 // Generated 11 juin 2020 17:08:47 by Hibernate Tools 5.4.14.Final
 
-import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,64 +24,80 @@ public class Ville implements java.io.Serializable {
 	private Long idVille;
 	@ManyToOne
 	private Departement departement;
+	@Column(unique = true, nullable = false)
 	private String libelle;
+	@Column(unique = true, nullable = false)
 	private String codePostal;
 	@OneToMany(mappedBy = "ville")
-	private Collection<Utilisateur> utilisateurs;
+	private Set<AddresseProfessionnel> addressesProfessionnel;
 	@OneToMany(mappedBy = "ville")
-	private Collection<Addresse> addresses;
+	private Set<AddresseUtilisateur> addressesUtilisateurs;
+
 	public Ville() {
 		super();
 	}
+
 	public Ville(Long idVille, Departement departement, String libelle, String codePostal,
-			Collection<Utilisateur> utilisateurs, Collection<Addresse> addresses) {
+			Set<AddresseProfessionnel> addressesProfessionnel, Set<AddresseUtilisateur> addressesUtilisateurs) {
 		super();
 		this.idVille = idVille;
 		this.departement = departement;
 		this.libelle = libelle;
 		this.codePostal = codePostal;
-		this.utilisateurs = utilisateurs;
-		this.addresses = addresses;
+		this.addressesProfessionnel = addressesProfessionnel;
+		this.addressesUtilisateurs = addressesUtilisateurs;
 	}
+
 	public Long getIdVille() {
 		return idVille;
 	}
+
 	public void setIdVille(Long idVille) {
 		this.idVille = idVille;
 	}
+
 	public Departement getDepartement() {
 		return departement;
 	}
+
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
 	}
+
 	public String getLibelle() {
 		return libelle;
 	}
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+
 	public String getCodePostal() {
 		return codePostal;
 	}
+
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
-	public Collection<Utilisateur> getUtilisateurs() {
-		return utilisateurs;
+
+	public Set<AddresseProfessionnel> getAddressesProfessionnel() {
+		return addressesProfessionnel;
 	}
-	public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+
+	public void setAddressesProfessionnel(Set<AddresseProfessionnel> addressesProfessionnel) {
+		this.addressesProfessionnel = addressesProfessionnel;
 	}
-	public Collection<Addresse> getAddresses() {
-		return addresses;
+
+	public Set<AddresseUtilisateur> getAddressesUtilisateurs() {
+		return addressesUtilisateurs;
 	}
-	public void setAddresses(Collection<Addresse> addresses) {
-		this.addresses = addresses;
+
+	public void setAddressesUtilisateurs(Set<AddresseUtilisateur> addressesUtilisateurs) {
+		this.addressesUtilisateurs = addressesUtilisateurs;
 	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	
 }

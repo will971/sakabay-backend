@@ -1,11 +1,11 @@
-package com.mowil.ats.dao;
+package com.mowil.ats.dao.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.mowil.ats.entities.Addresse;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import com.mowil.ats.dao.entities.Service;
+
 @RepositoryRestResource
-public interface AddresseRepository extends JpaRepository<Addresse ,Long> {
+public interface ServiceRepository extends JpaRepository< Service,Long>  {
 
 }
