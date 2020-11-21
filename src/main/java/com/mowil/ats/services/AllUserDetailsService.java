@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.mowil.ats.dao.entities.Compte;
-import com.mowil.ats.dao.entities.Role;
 import com.mowil.ats.dao.repositories.CompteRepository;
 
 @Service
@@ -25,9 +24,8 @@ public class AllUserDetailsService implements UserDetailsService {
 		Compte c = compteRepository.findOneByMailOrUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("user not found"));
 
-		User user = new User(c.getMail(), c.getPassword(), new ArrayList<>());
+		return new User(c.getMail(), c.getPassword(), new ArrayList<>());
 
-		return user;
 	}
 
 }

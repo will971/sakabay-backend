@@ -1,0 +1,89 @@
+2020-11-21 23:21:56,023 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SakabayBackendApplication on MBP-de-Williams with PID 3007 (/Users/williamsmodeste/eclipse-workspace/sakabay-backend/target/classes started by williamsmodeste in /Users/williamsmodeste/eclipse-workspace/sakabay-backend)
+2020-11-21 23:21:56,023 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-11-21 23:21:56,023 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-11-21 23:21:56,203 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-11-21 23:21:56,230 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 26ms. Found 12 JPA repository interfaces.
+2020-11-21 23:21:56,339 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2020-11-21 23:21:56,340 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2020-11-21 23:21:56,340 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-11-21 23:21:56,346 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2020-11-21 23:21:56,347 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 322 ms
+2020-11-21 23:21:56,380 DEBUG org.springframework.web.filter.GenericFilterBean [restartedMain] Filter 'jwtRequestFilter' configured for use
+2020-11-21 23:21:56,416 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-21 23:21:56,422 INFO org.hibernate.jpa.internal.util.LogHelper [task-1] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-11-21 23:21:56,428 INFO com.zaxxer.hikari.HikariDataSource [task-1] HikariPool-16 - Starting...
+2020-11-21 23:21:56,439 INFO com.zaxxer.hikari.HikariDataSource [task-1] HikariPool-16 - Start completed.
+2020-11-21 23:21:56,439 INFO org.hibernate.dialect.Dialect [task-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-11-21 23:21:56,461 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-11-21 23:21:57,063 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [task-1] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-11-21 23:21:57,064 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [task-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-11-21 23:21:57,118 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [task-2] LiveReload server is running on port 35729
+2020-11-21 23:21:57,153 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5d84a4a5, org.springframework.security.web.context.SecurityContextPersistenceFilter@5f7a9622, org.springframework.security.web.header.HeaderWriterFilter@2fdecd4, org.springframework.security.web.authentication.logout.LogoutFilter@b7a613, com.mowil.ats.configuration.JwtRequestFilter@465811be, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@29cd3af1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@44bbe850, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@62de8dab, org.springframework.security.web.session.SessionManagementFilter@360f3197, org.springframework.security.web.access.ExceptionTranslationFilter@4b77a6ca, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7a97901b]
+2020-11-21 23:21:57,265 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-21 23:21:57,266 INFO org.springframework.data.repository.config.DeferredRepositoryInitializationListener [restartedMain] Triggering deferred initialization of Spring Data repositories…
+2020-11-21 23:21:57,391 INFO org.springframework.data.repository.config.DeferredRepositoryInitializationListener [restartedMain] Spring Data repositories initialized!
+2020-11-21 23:21:57,394 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started SakabayBackendApplication in 1.396 seconds (JVM running for 818.24)
+2020-11-21 23:21:57,505 INFO com.mowil.ats.services.LoggerService [restartedMain] "ceci est un test"
+2020-11-21 23:21:57,506 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2020-11-21 23:22:01,725 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-3202] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-11-21 23:22:01,726 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-3202] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-21 23:22:01,726 INFO com.zaxxer.hikari.HikariDataSource [Thread-3202] HikariPool-16 - Shutdown initiated...
+2020-11-21 23:22:01,730 INFO com.zaxxer.hikari.HikariDataSource [Thread-3202] HikariPool-16 - Shutdown completed.
+2020-11-21 23:22:01,970 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SakabayBackendApplication on MBP-de-Williams with PID 3007 (/Users/williamsmodeste/eclipse-workspace/sakabay-backend/target/classes started by williamsmodeste in /Users/williamsmodeste/eclipse-workspace/sakabay-backend)
+2020-11-21 23:22:01,971 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-11-21 23:22:01,971 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-11-21 23:22:02,139 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-11-21 23:22:02,164 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 25ms. Found 12 JPA repository interfaces.
+2020-11-21 23:22:02,259 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2020-11-21 23:22:02,259 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2020-11-21 23:22:02,260 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-11-21 23:22:02,264 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2020-11-21 23:22:02,265 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 293 ms
+2020-11-21 23:22:02,296 DEBUG org.springframework.web.filter.GenericFilterBean [restartedMain] Filter 'jwtRequestFilter' configured for use
+2020-11-21 23:22:02,328 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-21 23:22:02,334 INFO org.hibernate.jpa.internal.util.LogHelper [task-1] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-11-21 23:22:02,338 INFO com.zaxxer.hikari.HikariDataSource [task-1] HikariPool-17 - Starting...
+2020-11-21 23:22:02,348 INFO com.zaxxer.hikari.HikariDataSource [task-1] HikariPool-17 - Start completed.
+2020-11-21 23:22:02,349 INFO org.hibernate.dialect.Dialect [task-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-11-21 23:22:02,372 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-11-21 23:22:02,952 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [task-1] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-11-21 23:22:02,952 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [task-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-11-21 23:22:03,022 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [task-2] LiveReload server is running on port 35729
+2020-11-21 23:22:03,030 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55131423, org.springframework.security.web.context.SecurityContextPersistenceFilter@647f0fd5, org.springframework.security.web.header.HeaderWriterFilter@6a3a85ef, org.springframework.security.web.authentication.logout.LogoutFilter@781784be, com.mowil.ats.configuration.JwtRequestFilter@1e197bc1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c803b60, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@622bd8e2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e62324b, org.springframework.security.web.session.SessionManagementFilter@758e7537, org.springframework.security.web.access.ExceptionTranslationFilter@7679d7c5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@421eb5bc]
+2020-11-21 23:22:03,124 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-21 23:22:03,125 INFO org.springframework.data.repository.config.DeferredRepositoryInitializationListener [restartedMain] Triggering deferred initialization of Spring Data repositories…
+2020-11-21 23:22:03,247 INFO org.springframework.data.repository.config.DeferredRepositoryInitializationListener [restartedMain] Spring Data repositories initialized!
+2020-11-21 23:22:03,250 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started SakabayBackendApplication in 1.296 seconds (JVM running for 824.095)
+2020-11-21 23:22:03,363 INFO com.mowil.ats.services.LoggerService [restartedMain] "ceci est un test"
+2020-11-21 23:22:03,364 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2020-11-21 23:23:10,185 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-3415] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-11-21 23:23:10,185 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-3415] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-21 23:23:10,185 INFO com.zaxxer.hikari.HikariDataSource [Thread-3415] HikariPool-17 - Shutdown initiated...
+2020-11-21 23:23:10,189 INFO com.zaxxer.hikari.HikariDataSource [Thread-3415] HikariPool-17 - Shutdown completed.
+2020-11-21 23:23:10,332 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting SakabayBackendApplication on MBP-de-Williams with PID 3007 (/Users/williamsmodeste/eclipse-workspace/sakabay-backend/target/classes started by williamsmodeste in /Users/williamsmodeste/eclipse-workspace/sakabay-backend)
+2020-11-21 23:23:10,332 DEBUG org.springframework.boot.StartupInfoLogger [restartedMain] Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-11-21 23:23:10,332 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2020-11-21 23:23:10,508 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-11-21 23:23:10,534 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 25ms. Found 12 JPA repository interfaces.
+2020-11-21 23:23:10,628 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2020-11-21 23:23:10,628 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2020-11-21 23:23:10,628 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-11-21 23:23:10,633 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2020-11-21 23:23:10,633 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 299 ms
+2020-11-21 23:23:10,665 DEBUG org.springframework.web.filter.GenericFilterBean [restartedMain] Filter 'jwtRequestFilter' configured for use
+2020-11-21 23:23:10,695 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-21 23:23:10,701 INFO org.hibernate.jpa.internal.util.LogHelper [task-1] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-11-21 23:23:10,705 INFO com.zaxxer.hikari.HikariDataSource [task-1] HikariPool-18 - Starting...
+2020-11-21 23:23:10,716 INFO com.zaxxer.hikari.HikariDataSource [task-1] HikariPool-18 - Start completed.
+2020-11-21 23:23:10,716 INFO org.hibernate.dialect.Dialect [task-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-11-21 23:23:10,737 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-11-21 23:23:11,329 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [task-1] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-11-21 23:23:11,330 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [task-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-11-21 23:23:11,398 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [task-2] LiveReload server is running on port 35729
+2020-11-21 23:23:11,412 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4491335d, org.springframework.security.web.context.SecurityContextPersistenceFilter@1287cee6, org.springframework.security.web.header.HeaderWriterFilter@7efb460c, org.springframework.security.web.authentication.logout.LogoutFilter@36f4939e, com.mowil.ats.configuration.JwtRequestFilter@1b54b045, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1ed3f4d2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3a3c1a22, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4aae42ca, org.springframework.security.web.session.SessionManagementFilter@61c82f81, org.springframework.security.web.access.ExceptionTranslationFilter@4e584004, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@12592aad]
+2020-11-21 23:23:11,504 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-21 23:23:11,505 INFO org.springframework.data.repository.config.DeferredRepositoryInitializationListener [restartedMain] Triggering deferred initialization of Spring Data repositories…
+2020-11-21 23:23:11,629 INFO org.springframework.data.repository.config.DeferredRepositoryInitializationListener [restartedMain] Spring Data repositories initialized!
+2020-11-21 23:23:11,632 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started SakabayBackendApplication in 1.321 seconds (JVM running for 892.478)
+2020-11-21 23:23:11,745 INFO com.mowil.ats.services.LoggerService [restartedMain] "ceci est un test"
+2020-11-21 23:23:11,746 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged

@@ -5,12 +5,15 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.mowil.ats.configuration.PropsConfiguration;
 import com.mowil.ats.dao.entities.Compte;
 import com.mowil.ats.dao.entities.Departement;
 import com.mowil.ats.dao.entities.Role;
@@ -21,6 +24,7 @@ import com.mowil.ats.dao.repositories.DepartementRepository;
 import com.mowil.ats.dao.repositories.RoleRepository;
 import com.mowil.ats.dao.repositories.UtilisateurRepository;
 import com.mowil.ats.dao.repositories.VilleRepository;
+import com.mowil.ats.services.LoggerService;
 
 @SpringBootApplication
 public class SakabayBackendApplication implements CommandLineRunner {
@@ -34,6 +38,11 @@ public class SakabayBackendApplication implements CommandLineRunner {
 	private UtilisateurRepository utilisateurRepository;
 	@Autowired
 	private CompteRepository compteRepository;
+	@Autowired
+	private PropsConfiguration props;
+	@Autowired
+	private LoggerService loggerService;
+	private static final Logger LOG = LoggerFactory.getLogger(SakabayBackendApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(SakabayBackendApplication.class, args);
@@ -41,6 +50,7 @@ public class SakabayBackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 		Calendar cal = new GregorianCalendar();
@@ -68,7 +78,7 @@ public class SakabayBackendApplication implements CommandLineRunner {
 
 		Role role3 = new Role("PROFFESSIONNEL");
 		roleRepository.save(role3);
-		
+
 		depRepository.save(dep1);
 		villeRepository.save(ville1);
 		villeRepository.save(ville2);
@@ -80,11 +90,11 @@ public class SakabayBackendApplication implements CommandLineRunner {
 		c1.setMail("modeste.william.s@gmail.com");
 		c1.setPassword(passwordEncoder.encode("will"));
 		c1.setUsername("Will");
-		ArrayList<Role> listRoles=new ArrayList<Role>();
+		ArrayList<Role> listRoles = new ArrayList<Role>();
 		listRoles.add(role1);
 		listRoles.add(role2);
 		listRoles.add(role3);
-		
+
 		c1.setRoles(new HashSet<Role>(listRoles));
 		compteRepository.save(c1);
 
@@ -93,6 +103,7 @@ public class SakabayBackendApplication implements CommandLineRunner {
 		utilisateur1.setTelephone("0778430873");
 		utilisateur1.setCompte(c1);
 		utilisateurRepository.save(utilisateur1);
+		loggerService.infoLog(LOG, this.props.env.getProperty("test"));
 
 	}
 
