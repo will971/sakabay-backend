@@ -90,12 +90,12 @@ public class SakabayBackendApplication implements CommandLineRunner {
 		c1.setMail("modeste.william.s@gmail.com");
 		c1.setPassword(passwordEncoder.encode("will"));
 		c1.setUsername("Will");
-		ArrayList<Role> listRoles = new ArrayList<Role>();
+		ArrayList<Role> listRoles = new ArrayList<>();
 		listRoles.add(role1);
 		listRoles.add(role2);
 		listRoles.add(role3);
 
-		c1.setRoles(new HashSet<Role>(listRoles));
+		c1.setRoles(new HashSet<>(listRoles));
 		compteRepository.save(c1);
 
 		utilisateur1.setPrenom("Will");
