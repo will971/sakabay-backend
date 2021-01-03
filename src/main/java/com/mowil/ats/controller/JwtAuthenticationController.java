@@ -16,7 +16,6 @@ import com.mowil.ats.configuration.JwtTokenUtil;
 import com.mowil.ats.model.JwtRequest;
 import com.mowil.ats.model.JwtResponse;
 import com.mowil.ats.services.AllUserDetailsService;
-import com.mowil.ats.services.AuthenticationService;
 
 @RestController
 @CrossOrigin
@@ -27,21 +26,12 @@ public class JwtAuthenticationController {
 	private JwtTokenUtil jwtTokenUtil;
 	@Autowired
 	AllUserDetailsService userDetailsService;
-	@Autowired
-	AuthenticationService authenticationService;
 
 	@PostMapping(value = "/authenticate")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-		if (authenticationRequest.isProfessionnel()) {
-			this.authenticationService.checkIfHasRole("PROFFESSIONNEL", authenticationRequest.getUsername());
-		} else {
-
-		}
-
 		final String token = jwtTokenUtil.generateToken(userDetails);
-
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 

@@ -2,13 +2,16 @@ package com.mowil.ats.dao.entities;
 // Generated 11 juin 2020 17:08:47 by Hibernate Tools 5.4.14.Final
 
 import java.util.Collection;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 
@@ -21,20 +24,29 @@ public class Service implements java.io.Serializable {
 	@ManyToOne
 	private Profession profession;
 	private String libelle;
-	@OneToMany(mappedBy = "service")
-	private Collection<ServiceProfessionnel> serviceProfessionnels;
+	@ManyToMany()
+	@JoinTable(name = "Services_Utilisateurs", joinColumns = @JoinColumn(name = "service_id"), inverseJoinColumns = @JoinColumn(name = "utilisateur_id"))
+	private Collection<Utilisateur> utilisateurs;
 
 	public Service() {
 		super();
 	}
 
-	public Service(Long idService, Profession profession, String libelle,
-			Collection<ServiceProfessionnel> serviceProfessionnels) {
+	public Service(Long idService, Profession profession, String libelle, Set<Utilisateur> utilisateurs) {
 		super();
 		this.idService = idService;
 		this.profession = profession;
 		this.libelle = libelle;
-		this.serviceProfessionnels = serviceProfessionnels;
+		this.utilisateurs = utilisateurs;
+
+	}
+
+	public Collection<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+
+	public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
 	}
 
 	public Long getIdService() {
@@ -59,14 +71,6 @@ public class Service implements java.io.Serializable {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
-	}
-
-	public Collection<ServiceProfessionnel> getServiceProfessionnels() {
-		return serviceProfessionnels;
-	}
-
-	public void setServiceProfessionnels(Collection<ServiceProfessionnel> serviceProfessionnels) {
-		this.serviceProfessionnels = serviceProfessionnels;
 	}
 
 	public static long getSerialversionuid() {

@@ -28,8 +28,7 @@ public class Ville implements java.io.Serializable {
 	private String libelle;
 	@Column(unique = true, nullable = false)
 	private String codePostal;
-	@OneToMany(mappedBy = "ville")
-	private Set<AddresseProfessionnel> addressesProfessionnel;
+
 	@OneToMany(mappedBy = "ville")
 	private Set<AddresseUtilisateur> addressesUtilisateurs;
 
@@ -38,13 +37,13 @@ public class Ville implements java.io.Serializable {
 	}
 
 	public Ville(Long idVille, Departement departement, String libelle, String codePostal,
-			Set<AddresseProfessionnel> addressesProfessionnel, Set<AddresseUtilisateur> addressesUtilisateurs) {
+			Set<AddresseUtilisateur> addressesUtilisateurs) {
 		super();
 		this.idVille = idVille;
 		this.departement = departement;
 		this.libelle = libelle;
 		this.codePostal = codePostal;
-		this.addressesProfessionnel = addressesProfessionnel;
+
 		this.addressesUtilisateurs = addressesUtilisateurs;
 	}
 
@@ -78,14 +77,6 @@ public class Ville implements java.io.Serializable {
 
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
-	}
-
-	public Set<AddresseProfessionnel> getAddressesProfessionnel() {
-		return addressesProfessionnel;
-	}
-
-	public void setAddressesProfessionnel(Set<AddresseProfessionnel> addressesProfessionnel) {
-		this.addressesProfessionnel = addressesProfessionnel;
 	}
 
 	public Set<AddresseUtilisateur> getAddressesUtilisateurs() {

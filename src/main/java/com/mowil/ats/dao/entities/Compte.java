@@ -40,11 +40,6 @@ public class Compte implements Serializable {
 					@JoinColumn(name = "utilisateur_id", referencedColumnName = "id") })
 	private Utilisateur utilisateur;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinTable(name = "Compte_Professionnel", joinColumns = {
-			@JoinColumn(name = "compte_id", referencedColumnName = "id") }, inverseJoinColumns = {
-					@JoinColumn(name = "professionnel_id", referencedColumnName = "id") })
-	private Professionnel professionnel;
 	@ManyToMany()
 	@JoinTable(name = "Comptes_Roles", joinColumns = @JoinColumn(name = "compte_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Collection<Role> roles;
@@ -54,7 +49,7 @@ public class Compte implements Serializable {
 	}
 
 	public Compte(Long id, String mail, String username, String password, Date dateDeNaissance, boolean status,
-			Utilisateur utilisateur, Professionnel professionnel, Set<Role> roles) {
+			Utilisateur utilisateur, Set<Role> roles) {
 		super();
 		this.id = id;
 		this.mail = mail;
@@ -63,7 +58,7 @@ public class Compte implements Serializable {
 		this.dateDeNaissance = dateDeNaissance;
 		this.status = status;
 		this.utilisateur = utilisateur;
-		this.professionnel = professionnel;
+
 		this.roles = roles;
 	}
 
@@ -121,14 +116,6 @@ public class Compte implements Serializable {
 
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
-	}
-
-	public Professionnel getProfessionnel() {
-		return professionnel;
-	}
-
-	public void setProfessionnel(Professionnel professionnel) {
-		this.professionnel = professionnel;
 	}
 
 	public Collection<Role> getRoles() {
