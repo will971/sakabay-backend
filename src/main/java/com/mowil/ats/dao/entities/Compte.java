@@ -39,7 +39,7 @@ public class Compte implements Serializable {
 			@JoinColumn(name = "compte_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "utilisateur_id", referencedColumnName = "id") })
 	private Utilisateur utilisateur;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinTable(name = "Compte_Professionnel", joinColumns = {
 			@JoinColumn(name = "compte_id", referencedColumnName = "id") }, inverseJoinColumns = {
