@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-
 public class AddresseUtilisateur implements java.io.Serializable {
 
 	private static final long serialVersionUID = -1237565009519875750L;
@@ -32,7 +31,6 @@ public class AddresseUtilisateur implements java.io.Serializable {
 	public AddresseUtilisateur() {
 		super();
 	}
-	
 
 	public AddresseUtilisateur(Long id, Ville ville, String numeroRue, String nomRue, String complementAddresse,
 			Utilisateur utilisateur) {
@@ -49,66 +47,52 @@ public class AddresseUtilisateur implements java.io.Serializable {
 		return serialVersionUID;
 	}
 
-
 	public Long getId() {
 		return id;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
 	public Ville getVille() {
 		return ville;
 	}
-
 
 	public void setVille(Ville ville) {
 		this.ville = ville;
 	}
 
-
 	public String getNumeroRue() {
 		return numeroRue;
 	}
-
 
 	public void setNumeroRue(String numeroRue) {
 		this.numeroRue = numeroRue;
 	}
 
-
 	public String getNomRue() {
 		return nomRue;
 	}
-
 
 	public void setNomRue(String nomRue) {
 		this.nomRue = nomRue;
 	}
 
-
 	public String getComplementAddresse() {
 		return complementAddresse;
 	}
-
 
 	public void setComplementAddresse(String complementAddresse) {
 		this.complementAddresse = complementAddresse;
 	}
 
-
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
 
-
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	
-	
 
 }

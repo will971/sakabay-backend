@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mowil.ats.configuration.JwtTokenUtil;
 import com.mowil.ats.model.JwtRequest;
-import com.mowil.ats.model.JwtResponse;
+import com.mowil.ats.model.responses.JwtResponse;
 import com.mowil.ats.services.AllUserDetailsService;
 
 @RestController

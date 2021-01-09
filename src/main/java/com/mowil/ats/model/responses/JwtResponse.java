@@ -1,4 +1,4 @@
-package com.mowil.ats.model;
+package com.mowil.ats.model.responses;
 
 import java.io.Serializable;
 
