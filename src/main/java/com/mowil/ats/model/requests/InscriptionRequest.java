@@ -1,10 +1,12 @@
 package com.mowil.ats.model.requests;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.mowil.ats.model.beans.AdresseUtilisateurBean;
 import com.mowil.ats.model.beans.CompteBean;
 import com.mowil.ats.model.beans.DepartementBean;
+import com.mowil.ats.model.beans.RoleBean;
 import com.mowil.ats.model.beans.UtilisateurBean;
 import com.mowil.ats.model.beans.VilleBean;
 
@@ -20,6 +22,15 @@ public class InscriptionRequest implements Serializable {
 	private DepartementBean departement;
 	private VilleBean ville;
 	private AdresseUtilisateurBean adresseUtilisateur;
+	private List<RoleBean> roleBeans;
+
+	public List<RoleBean> getRoleBeans() {
+		return roleBeans;
+	}
+
+	public void setRoleBeans(List<RoleBean> roleBeans) {
+		this.roleBeans = roleBeans;
+	}
 
 	public DepartementBean getDepartement() {
 		return departement;

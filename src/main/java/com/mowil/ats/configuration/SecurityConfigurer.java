@@ -17,43 +17,55 @@ import com.mowil.ats.services.AllUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private AllUserDetailsService allUserDetailService;
+    @Autowired
+    private AllUserDetailsService allUserDetailService;
 
-	@Autowired
-	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-	@Autowired
-	private JwtRequestFilter jwtRequestFilter;
+    @Autowired
+    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(allUserDetailService).passwordEncoder(passwordEncoder());
-	}
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	auth.userDetailsService(allUserDetailService).passwordEncoder(passwordEncoder());
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
 
-		return new BCryptPasswordEncoder();
-	}
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
+	return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
 	return super.authenticationManagerBean();
-	}
-	
-	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
+    }
+
+    private static final String[] AUTH_WHITELIST = {
+	    // -- Swagger UI v2
+	    "/v2/api-docs", "/swagger-resources", "/swagger-resources/**", "/configuration/ui",
+	    "/configuration/security", "/swagger-ui.html", "/webjars/**",
+	    // -- Swagger UI v3 (OpenAPI)
+	    "/v3/api-docs/**", "/swagger-ui/**",
+	    // customs
+	    "/api-docs/**", "/swagger-ui.html", "/authenticate" };
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+
 	// We don't need CSRF for this example
 	httpSecurity.csrf().disable()
-	// dont authenticate this particular request
-	.authorizeRequests().antMatchers("/authenticate").permitAll().
-	// all other requests need to be authenticated
-	anyRequest().authenticated().and().
-	// make sure we use stateless session; session won't be used to
-	// store user's state.
-	exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-	.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		// dont authenticate this particular request
+		.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll().antMatchers("/**").
+		// all other requests need to be authenticated
+		authenticated().and().
+		// make sure we use stateless session; session won't be used to
+		// store user's state.
+		exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	// Add a filter to validate the tokens with every request
 	httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-	}
+    }
+
 }

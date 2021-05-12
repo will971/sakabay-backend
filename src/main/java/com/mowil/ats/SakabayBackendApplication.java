@@ -24,6 +24,7 @@ import com.mowil.ats.dao.repositories.DepartementRepository;
 import com.mowil.ats.dao.repositories.RoleRepository;
 import com.mowil.ats.dao.repositories.UtilisateurRepository;
 import com.mowil.ats.dao.repositories.VilleRepository;
+import com.mowil.ats.services.InscriptionService;
 import com.mowil.ats.services.LoggerService;
 
 @SpringBootApplication
@@ -42,6 +43,8 @@ public class SakabayBackendApplication implements CommandLineRunner {
 	private PropsConfiguration props;
 	@Autowired
 	private LoggerService loggerService;
+	@Autowired
+	private InscriptionService inscriptionService;
 	private static final Logger LOG = LoggerFactory.getLogger(SakabayBackendApplication.class);
 
 	public static void main(String[] args) {
