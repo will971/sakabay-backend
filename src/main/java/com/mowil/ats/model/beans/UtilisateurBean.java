@@ -4,64 +4,68 @@ import java.io.Serializable;
 
 public class UtilisateurBean implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3356639076567018364L;
-	private Long id;
-	private String telephone;
-	private String nom;
-	private String prenom;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 3356639076567018364L;
+    private Long id;
+    private String telephone;
+    private String nom;
+    private String prenom;
 
-	public UtilisateurBean(String telephone, String nom, String prenom) {
-		super();
-		this.telephone = telephone;
-		this.nom = nom;
-		this.prenom = prenom;
-	}
+    public UtilisateurBean(String telephone, String nom, String prenom) {
+	super();
+	this.telephone = telephone;
+	this.nom = nom;
+	this.prenom = prenom;
+    }
 
-	public UtilisateurBean(Long id, String telephone, String nom, String prenom) {
-		super();
-		this.id = id;
-		this.telephone = telephone;
-		this.nom = nom;
-		this.prenom = prenom;
-	}
+    public UtilisateurBean() {
+	super();
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public UtilisateurBean(Long id, String telephone, String nom, String prenom) {
+	super();
+	this.id = id;
+	this.telephone = telephone;
+	this.nom = nom;
+	this.prenom = prenom;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public String getTelephone() {
-		return telephone;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
+    public String getTelephone() {
+	return telephone;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public void setTelephone(String telephone) {
+	this.telephone = telephone;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public String getNom() {
+	return nom;
+    }
 
-	public String getPrenom() {
-		return prenom;
-	}
+    public void setNom(String nom) {
+	this.nom = nom;
+    }
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+    public String getPrenom() {
+	return prenom;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public void setPrenom(String prenom) {
+	this.prenom = prenom;
+    }
+
+    public static long getSerialversionuid() {
+	return serialVersionUID;
+    }
 
 }

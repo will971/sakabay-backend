@@ -44,12 +44,12 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     private static final String[] AUTH_WHITELIST = {
 	    // -- Swagger UI v2
-	    "/v2/api-docs", "/swagger-resources", "/swagger-resources/**", "/configuration/ui",
+	    "/v2/api-docs/**", "/swagger-resources", "/swagger-resources/**", "/configuration/ui",
 	    "/configuration/security", "/swagger-ui.html", "/webjars/**",
 	    // -- Swagger UI v3 (OpenAPI)
 	    "/v3/api-docs/**", "/swagger-ui/**",
 	    // customs
-	    "/api-docs/**", "/swagger-ui.html", "/authenticate" };
+	    "/api-docs/**", "/swagger-ui.html", "/authenticate", "/signup" };
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {

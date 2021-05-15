@@ -5,93 +5,97 @@ import java.util.Date;
 
 public class CompteBean implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4304293903738538413L;
-	private Long id;
-	private String mail;
-	private String username;
-	private String password;
-	private Date dateOfBirth;
-	private boolean status;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 4304293903738538413L;
+    private Long id;
+    private String mail;
+    private String username;
+    private String password;
+    private Date dateOfBirth;
+    private boolean status;
 
-	public CompteBean(String mail, String username, String password, Date dateOfBirth) {
-		super();
-		this.mail = mail;
-		this.username = username;
-		this.password = password;
-		this.dateOfBirth = dateOfBirth;
-	}
+    public CompteBean() {
 
-	public CompteBean(Long id, String mail, String username, String password, Date dateOfBirth, boolean status) {
-		super();
-		this.id = id;
-		this.mail = mail;
-		this.username = username;
-		this.password = password;
-		this.dateOfBirth = dateOfBirth;
-		this.status = status;
-	}
+    }
 
-	public CompteBean(String mail, String username, String password, Date dateOfBirth, boolean status) {
-		super();
-		this.mail = mail;
-		this.username = username;
-		this.password = password;
-		this.dateOfBirth = dateOfBirth;
-		this.status = status;
-	}
+    public CompteBean(String mail, String username, String password, Date dateOfBirth) {
+	super();
+	this.mail = mail;
+	this.username = username;
+	this.password = password;
+	this.dateOfBirth = dateOfBirth;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public CompteBean(Long id, String mail, String username, String password, Date dateOfBirth, boolean status) {
+	super();
+	this.id = id;
+	this.mail = mail;
+	this.username = username;
+	this.password = password;
+	this.dateOfBirth = dateOfBirth;
+	this.status = status;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public CompteBean(String mail, String username, String password, Date dateOfBirth, boolean status) {
+	super();
+	this.mail = mail;
+	this.username = username;
+	this.password = password;
+	this.dateOfBirth = dateOfBirth;
+	this.status = status;
+    }
 
-	public String getMail() {
-		return mail;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getMail() {
+	return mail;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setMail(String mail) {
+	this.mail = mail;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getUsername() {
+	return username;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setUsername(String username) {
+	this.username = username;
+    }
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
+    public String getPassword() {
+	return password;
+    }
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+    public void setPassword(String password) {
+	this.password = password;
+    }
 
-	public boolean isStatus() {
-		return status;
-	}
+    public Date getDateOfBirth() {
+	return dateOfBirth;
+    }
 
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+    public void setDateOfBirth(Date dateOfBirth) {
+	this.dateOfBirth = dateOfBirth;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public boolean isStatus() {
+	return status;
+    }
+
+    public void setStatus(boolean status) {
+	this.status = status;
+    }
+
+    public static long getSerialversionuid() {
+	return serialVersionUID;
+    }
 }

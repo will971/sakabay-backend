@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.mowil.ats.dao.entities.AddresseUtilisateur;
 import com.mowil.ats.dao.entities.Compte;
 import com.mowil.ats.dao.entities.Departement;
 import com.mowil.ats.dao.entities.Role;
 import com.mowil.ats.dao.entities.Utilisateur;
 import com.mowil.ats.dao.entities.Ville;
+import com.mowil.ats.model.beans.AdresseUtilisateurBean;
 import com.mowil.ats.model.beans.CompteBean;
 import com.mowil.ats.model.beans.DepartementBean;
 import com.mowil.ats.model.beans.UtilisateurBean;
@@ -49,5 +51,16 @@ public class MappingService {
 	utilisateur.setPrenom(utilisateurBean.getPrenom());
 	utilisateur.setTelephone(utilisateurBean.getTelephone());
 	return utilisateur;
+    }
+
+    public AddresseUtilisateur adresseUtilisateurMapping(AdresseUtilisateurBean adresseUtilisateurBean, Ville ville,
+	    Utilisateur utilisateur) {
+	AddresseUtilisateur adresseUtilisateur = new AddresseUtilisateur();
+	adresseUtilisateur.setComplementAddresse(adresseUtilisateurBean.getComplementAddresse());
+	adresseUtilisateur.setNomRue(adresseUtilisateurBean.getNomRue());
+	adresseUtilisateur.setNumeroRue(adresseUtilisateurBean.getNomRue());
+	adresseUtilisateur.setVille(ville);
+	adresseUtilisateur.setUtilisateur(utilisateur);
+	return adresseUtilisateur;
     }
 }

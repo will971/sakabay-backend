@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mowil.ats.configuration.JwtTokenUtil;
-import com.mowil.ats.model.JwtRequest;
 import com.mowil.ats.model.requests.InscriptionRequest;
+import com.mowil.ats.model.requests.LoginRequest;
 import com.mowil.ats.model.responses.JwtResponse;
 import com.mowil.ats.services.AllUserDetailsService;
 import com.mowil.ats.services.InscriptionService;
@@ -38,14 +38,12 @@ public class AuthentificationController {
     private LoggerService logservice;
     private static final Logger LOG = LoggerFactory.getLogger(AuthentificationController.class);
 
-    @PostMapping(value = "/signup")
-    public ResponseEntity<?> inscription(@RequestBody InscriptionRequest request) {
-	return null;
-
-    }
+    // Ligne a ajouter devant les points d'entrée sécurisé
+    // @Operation(security = {@SecurityRequirement(name = "bearer-key") })
 
     @PostMapping(value = "/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody LoginRequest authenticationRequest)
+	    throws Exception {
 	logservice.debugLog(LOG, "Réception d'une requête d'authentification");
 	authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 	final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
@@ -64,8 +62,17 @@ public class AuthentificationController {
 	}
     }
 
-    public void signup(@RequestBody InscriptionRequest inscriptionRequest) {
+    @PostMapping(value = "/signup")
+    public ResponseEntity<?> signup(@RequestBody InscriptionRequest inscriptionRequest) {
 	logservice.debugLog(LOG, "Inscription d'un nouvel utilisateur : " + inscriptionRequest.toString());
-	this.inscriptionService.inscription(inscriptionRequest);
+	try {
+	    this.inscriptionService.inscription(inscriptionRequest);
+	    return ResponseEntity.ok("Inscription réussie");
+	} catch (Exception e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	    return ResponseEntity.badRequest().body("Il y a eu une erreur : " + e.getMessage());
+	}
+
     }
 }

@@ -2,6 +2,7 @@ package com.mowil.ats.services;
 
 import org.springframework.stereotype.Service;
 
+import com.mowil.ats.model.beans.AdresseUtilisateurBean;
 import com.mowil.ats.model.beans.CompteBean;
 import com.mowil.ats.model.beans.DepartementBean;
 import com.mowil.ats.model.beans.RoleBean;
@@ -43,6 +44,7 @@ public class CheckDataService {
     }
 
     public boolean checkDepartementData(DepartementBean departementBean) {
+	// TODO faire les checks
 	boolean isOk = false;
 	if (departementBean != null) {
 	    isOk = true;
@@ -51,8 +53,18 @@ public class CheckDataService {
     }
 
     public boolean checkUtilisateurData(UtilisateurBean utilisateurBean) {
+	// TODO faire les checks
 	boolean isOk = false;
 	if (utilisateurBean != null) {
+	    isOk = true;
+	}
+	return isOk;
+    }
+
+    public boolean checkAddresseUtilisateurData(AdresseUtilisateurBean adresseUtilisateurBean) {
+	// TODO faire les checks
+	boolean isOk = false;
+	if (adresseUtilisateurBean != null) {
 	    isOk = true;
 	}
 	return isOk;
