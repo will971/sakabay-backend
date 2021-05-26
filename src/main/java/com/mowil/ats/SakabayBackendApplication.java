@@ -1,9 +1,7 @@
 package com.mowil.ats;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.HashSet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,19 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.mowil.ats.configuration.PropsConfiguration;
-import com.mowil.ats.dao.entities.Compte;
-import com.mowil.ats.dao.entities.Departement;
 import com.mowil.ats.dao.entities.Role;
-import com.mowil.ats.dao.entities.Utilisateur;
-import com.mowil.ats.dao.entities.Ville;
 import com.mowil.ats.dao.repositories.CompteRepository;
 import com.mowil.ats.dao.repositories.DepartementRepository;
 import com.mowil.ats.dao.repositories.RoleRepository;
 import com.mowil.ats.dao.repositories.UtilisateurRepository;
 import com.mowil.ats.dao.repositories.VilleRepository;
+import com.mowil.ats.model.beans.AdresseUtilisateurBean;
+import com.mowil.ats.model.beans.CompteBean;
+import com.mowil.ats.model.beans.DepartementBean;
+import com.mowil.ats.model.beans.RoleBean;
+import com.mowil.ats.model.beans.UtilisateurBean;
+import com.mowil.ats.model.beans.VilleBean;
+import com.mowil.ats.model.requests.InscriptionRequest;
 import com.mowil.ats.services.InscriptionService;
 import com.mowil.ats.services.LoggerService;
 
@@ -56,23 +56,6 @@ public class SakabayBackendApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 	SpringDocUtils.getConfig().replaceWithClass(org.springframework.data.domain.Pageable.class,
 		org.springdoc.core.converters.models.Pageable.class);
-	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-	Calendar cal = new GregorianCalendar();
-
-	Departement dep1 = new Departement();
-	dep1.setLibelle("Guadeloupe");
-	dep1.setCode("971");
-
-	Ville ville1 = new Ville();
-	ville1.setLibelle("Basse-Terre");
-	ville1.setCodePostal("97100");
-	ville1.setDepartement(dep1);
-
-	Ville ville2 = new Ville();
-	ville2.setLibelle("Petit bourg");
-	ville2.setDepartement(dep1);
-	ville2.setCodePostal("97170");
 
 	Role role1 = new Role("USER");
 
@@ -84,31 +67,55 @@ public class SakabayBackendApplication implements CommandLineRunner {
 	Role role3 = new Role("PROFFESSIONNEL");
 	roleRepository.save(role3);
 
-	depRepository.save(dep1);
-	villeRepository.save(ville1);
-	villeRepository.save(ville2);
+	inscriptionService.inscription(setData());
 
-	Compte c1 = new Compte();
-	Utilisateur utilisateur1 = new Utilisateur();
-
-	c1.setDateDeNaissance(cal.getTime());
-	c1.setMail("modeste.william.s@gmail.com");
-	c1.setPassword(passwordEncoder.encode("will"));
-	c1.setUsername("Will");
-	ArrayList<Role> listRoles = new ArrayList<>();
-	listRoles.add(role1);
-	listRoles.add(role2);
-	listRoles.add(role3);
-
-	c1.setRoles(new HashSet<>(listRoles));
-	compteRepository.save(c1);
-
-	utilisateur1.setPrenom("Will");
-	utilisateur1.setNom("MODESTE");
-	utilisateur1.setTelephone("0778430873");
-	utilisateur1.setCompte(c1);
-	utilisateurRepository.save(utilisateur1);
 	loggerService.infoLog(LOG, this.props.env.getProperty("test"));
+
+    }
+
+    public InscriptionRequest setData() {
+	// initialisation du calendar
+	var cal = new GregorianCalendar();
+	// initialisation de l'objet de requête d'inscription
+	var inscriptionRequest = new InscriptionRequest();
+	// initialisation du compte et de ses données
+	var compteB = new CompteBean();
+	compteB.setDateOfBirth(cal.getTime());
+	compteB.setMail("modeste.william.s@gmail.com");
+	compteB.setPassword("will");
+	compteB.setUsername("Will");
+	// initialisation de l'adresse utilisateur et de ses données
+	var adresseUtilisateurBean = new AdresseUtilisateurBean();
+	adresseUtilisateurBean.setComplementAddresse("appartement 10");
+	adresseUtilisateurBean.setNomRue("rue henry descamps");
+	adresseUtilisateurBean.setNumeroRue("21");
+	// initialisation du département et de ses données
+	var departementBean = new DepartementBean();
+	departementBean.setLibelle("Guadeloupe");
+	departementBean.setCode("971");
+	// initialisation de l'utilisateur et de ses données
+	var utilisateurBean = new UtilisateurBean();
+	utilisateurBean.setPrenom("Will");
+	utilisateurBean.setNom("MODESTE");
+	utilisateurBean.setTelephone("0778430873");
+	// initialisation de la ville et de ses données
+	var villeBean = new VilleBean();
+	villeBean.setLibelle("Basse-Terre");
+	villeBean.setCodePostal("97100");
+
+	ArrayList<RoleBean> roleBeans = new ArrayList<>();
+	var roleBean = new RoleBean();
+	roleBean.setLibelle("ADMIN");
+	roleBeans.add(roleBean);
+
+	inscriptionRequest.setRoleBeans(roleBeans);
+	inscriptionRequest.setVille(villeBean);
+	inscriptionRequest.setUtilisateur(utilisateurBean);
+	inscriptionRequest.setDepartement(departementBean);
+	inscriptionRequest.setAdresseUtilisateur(adresseUtilisateurBean);
+	inscriptionRequest.setCompte(compteB);
+
+	return inscriptionRequest;
 
     }
 
