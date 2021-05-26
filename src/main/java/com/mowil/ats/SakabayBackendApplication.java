@@ -13,11 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.mowil.ats.configuration.PropsConfiguration;
 import com.mowil.ats.dao.entities.Role;
-import com.mowil.ats.dao.repositories.CompteRepository;
-import com.mowil.ats.dao.repositories.DepartementRepository;
 import com.mowil.ats.dao.repositories.RoleRepository;
-import com.mowil.ats.dao.repositories.UtilisateurRepository;
-import com.mowil.ats.dao.repositories.VilleRepository;
 import com.mowil.ats.model.beans.AdresseUtilisateurBean;
 import com.mowil.ats.model.beans.CompteBean;
 import com.mowil.ats.model.beans.DepartementBean;
@@ -30,16 +26,10 @@ import com.mowil.ats.services.LoggerService;
 
 @SpringBootApplication
 public class SakabayBackendApplication implements CommandLineRunner {
-    @Autowired
-    private DepartementRepository depRepository;
-    @Autowired
-    private VilleRepository villeRepository;
+
     @Autowired
     private RoleRepository roleRepository;
-    @Autowired
-    private UtilisateurRepository utilisateurRepository;
-    @Autowired
-    private CompteRepository compteRepository;
+
     @Autowired
     private PropsConfiguration props;
     @Autowired
@@ -102,19 +92,19 @@ public class SakabayBackendApplication implements CommandLineRunner {
 	var villeBean = new VilleBean();
 	villeBean.setLibelle("Basse-Terre");
 	villeBean.setCodePostal("97100");
-
+	// Initialisation des roles
 	ArrayList<RoleBean> roleBeans = new ArrayList<>();
 	var roleBean = new RoleBean();
 	roleBean.setLibelle("ADMIN");
 	roleBeans.add(roleBean);
-
+	// affectation des valeurs à la requête
 	inscriptionRequest.setRoleBeans(roleBeans);
 	inscriptionRequest.setVille(villeBean);
 	inscriptionRequest.setUtilisateur(utilisateurBean);
 	inscriptionRequest.setDepartement(departementBean);
 	inscriptionRequest.setAdresseUtilisateur(adresseUtilisateurBean);
 	inscriptionRequest.setCompte(compteB);
-
+	// Renvoie de l'objet
 	return inscriptionRequest;
 
     }

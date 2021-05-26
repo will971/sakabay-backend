@@ -57,12 +57,12 @@ public class InscriptionService {
 	// Récupération et affectation des roles au compte
 	List<Role> roles = getRoles(inscriptionRequest.getRoleBeans());
 	// creation du compte
-	Compte compte = createCompte(inscriptionRequest.getCompte(), roles);
+	var compte = createCompte(inscriptionRequest.getCompte(), roles);
 	// Récupération et affectation de la ville et du département
-	Ville ville = getOrCreateVille(inscriptionRequest.getVille(), inscriptionRequest.getDepartement());
+	var ville = getOrCreateVille(inscriptionRequest.getVille(), inscriptionRequest.getDepartement());
 	// Vérification que l'utilisateur n'existe pas en base & creation de
 	// l'utilisateur
-	Utilisateur utilisateur = checkAndCreateUser(inscriptionRequest.getUtilisateur(), compte);
+	var utilisateur = checkAndCreateUser(inscriptionRequest.getUtilisateur(), compte);
 	checkAndCreateAddresseUtilisateur(inscriptionRequest.getAdresseUtilisateur(), ville, utilisateur);
 
     }
@@ -145,7 +145,7 @@ public class InscriptionService {
 	    if (optionalVille.isPresent()) {
 		ville = optionalVille.get();
 	    } else {
-		Departement departement = getOrCreateDepartement(departementBean);
+		var departement = getOrCreateDepartement(departementBean);
 		ville = mappingService.villeMapping(villeBean);
 		ville.setDepartement(departement);
 		ville = villeRepository.save(ville);
@@ -160,7 +160,7 @@ public class InscriptionService {
     public Compte createCompte(CompteBean compteB, List<Role> roles) throws Exception {
 	Compte c = null;
 	if (checkDataService.checkCompteData(compteB)) {
-	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	    var passwordEncoder = new BCryptPasswordEncoder();
 	    compteB.setPassword(passwordEncoder.encode(compteB.getPassword()));
 	    Optional<Compte> optionalCompte = compteRepository.findOneByMailOrUsername(compteB.getMail(),
 		    compteB.getUsername());
